@@ -6,7 +6,7 @@ const getAllCarts = (req, res) => {
   db.query(query, (err, results) => {
     if (err) {
       console.error('Error fetching carts:', err);
-      res.status(500).send('Error fetching carts from the database.');
+      res.status(500).json('Error fetching carts from the database.');
     } else {
       res.json(results);
     }

@@ -7,7 +7,7 @@ const getAllUsers = (req, res) => {
   db.query(query, (err, results) => {
     if (err) {
       console.error('Error fetching users:', err);
-      res.status(500).send('Error fetching users from the database.');
+      res.status(500).json('Error fetching users from the database.');
     } else {
       res.json(results);
     }

@@ -58,12 +58,30 @@ export default function Header() {
                 Admin Dash
               </button>
             )}
+            {userType === "Seller" && (
+              <button
+                onClick={() => navigate("/add_product")}
+                className="px-4 py-2 rounded-lg bg-fuchsia-600 text-white font-semibold hover:bg-fuchsia-700 transition-colors duration-300"
+              >
+                Add Product
+              </button>
+            )}
+            {userType === "Seller" && (
+              <button
+                onClick={() => navigate("/edit_product")}
+                className="px-4 py-2 rounded-lg bg-fuchsia-600 text-white font-semibold hover:bg-fuchsia-700 transition-colors duration-300"
+              >
+                Edit Product
+              </button>
+            )}
             <button
               onClick={() => navigate(`/compalint`)}
               className="px-4 py-2 rounded-lg bg-green-500 text-white font-semibold hover:bg-green-600 transition-colors duration-300"
             >
               Complaint
             </button>
+
+            
           </div>
         )}
       </div>

@@ -1,13 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require("cors")
+const cors = require("cors");
 
 const app = express();
 const port = 3080;
 
-// Middleware
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+// Middleware with increased body size limit
+app.use(bodyParser.urlencoded({ extended: true, limit: '100mb' }));
+app.use(bodyParser.json({ limit: '100mb' }));
 app.use(cors());
 
 // Import routes
@@ -16,7 +16,7 @@ const productRoutes = require('./routes/productRoutes');
 const reviewsRoutes = require('./routes/reviewsRoutes');
 const complaintRoutes = require('./routes/complaintRoutes');
 const cartRoutes = require('./routes/cartRoutes');
-const cartProductJunctionRoutes = require('./routes/cartProductJunctionRoutes'); // Corrected the duplicate require
+const cartProductJunctionRoutes = require('./routes/cartProductJunctionRoutes');
 
 // Use routes
 app.use('/', userRoutes);

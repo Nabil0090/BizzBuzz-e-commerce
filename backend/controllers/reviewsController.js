@@ -6,7 +6,7 @@ const getAllReviews = (req, res) => {
   db.query(query, (err, results) => {
     if (err) {
       console.error('Error fetching reviews:', err);
-      res.status(500).send('Error fetching reviews from the database.');
+      res.status(500).json('Error fetching reviews from the database.');
     } else {
       res.json(results);
     }

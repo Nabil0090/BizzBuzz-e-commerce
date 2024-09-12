@@ -6,7 +6,7 @@ const getAllComplaints = (req, res) => {
   db.query(query, (err, results) => {
     if (err) {
       console.error('Error fetching complaints:', err);
-      res.status(500).send('Error fetching complaints from the database.');
+      res.status(500).json('Error fetching complaints from the database.');
     } else {
       res.json(results);
     }
