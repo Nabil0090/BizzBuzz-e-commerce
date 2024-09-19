@@ -10,6 +10,7 @@ import Complaint from "./component/Complaint/Complaint";
 import AddProduct from "./component/AddProduct/AddProduct";
 import EditProduct from "./component/AddProduct/EditProduct";
 import EditProductForm from "./component/AddProduct/EditProductForm";
+import Checkout from "./component/Cart/Checkout";
 
 function App() {
   const router = createBrowserRouter([
@@ -56,8 +57,12 @@ function App() {
           element: <EditProduct />,
         },
         {
-          path: "//edit_product/:id",
+          path: "/edit_product/:id",
           element: <EditProductForm />,
+        },
+        {
+          path: "/checkout",
+          element: <Checkout />,
         },
       ],
     },

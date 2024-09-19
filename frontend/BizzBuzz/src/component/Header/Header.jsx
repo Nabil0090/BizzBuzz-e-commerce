@@ -58,6 +58,14 @@ export default function Header() {
                 Admin Dash
               </button>
             )}
+            {(userType === "Buyer" || userType === "Seller") && (
+              <button
+                onClick={() => navigate("/cart")}
+                className="px-4 py-2 rounded-lg bg-fuchsia-600 text-white font-semibold hover:bg-fuchsia-700 transition-colors duration-300"
+              >
+                Cart
+              </button>
+            )}
             {userType === "Seller" && (
               <button
                 onClick={() => navigate("/add_product")}
@@ -80,8 +88,6 @@ export default function Header() {
             >
               Complaint
             </button>
-
-            
           </div>
         )}
       </div>

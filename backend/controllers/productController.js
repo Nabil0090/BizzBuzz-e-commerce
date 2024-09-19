@@ -16,7 +16,6 @@ const getAllProducts = (req, res) => {
 const insertProduct = (req, res) => {
   const { quantity, description, price, available, name, picture, seller_id } = req.body;
 
-  // Decode base64 picture
   const pictureBuffer = Buffer.from(picture.split(",")[1], 'base64');
 
   const query = 'INSERT INTO PRODUCT (QUANTITY, DESCRIPTION, PRICE, AVAILABLE, NAME, PICTURE, SELLER_ID) VALUES (?, ?, ?, ?, ?, ?, ?)';
@@ -43,7 +42,7 @@ const getProductsBySeller = (req, res) => {
       console.error('Error fetching products by seller:', err);
       res.status(500).json('Error fetching products by seller from the database.');
     } else {
-      // Convert binary picture data to base64
+      
       const products = results.map(product => ({
         ...product,
         picture: product.PICTURE ? `data:image/jpeg;base64,${product.PICTURE.toString('base64')}` : null
@@ -54,7 +53,7 @@ const getProductsBySeller = (req, res) => {
 };
 
 const getProductById = (req, res) => {
-  const { id } = req.params; // Get the product ID from the request parameters
+  const { id } = req.params; 
 
   const query = 'SELECT * FROM PRODUCT WHERE PRODUCT_ID = ?';
   
@@ -64,12 +63,7 @@ const getProductById = (req, res) => {
       res.status(500).json('Error fetching product from the database.');
     } else {
       if (results.length > 0) {
-        // Convert binary picture data to base64
-        const product = {
-          ...results[0],
-          PICTURE: results[0].PICTURE ? `data:image/jpeg;base64,${results[0].PICTURE.toString('base64')}` : null
-        };
-        res.json(product);
+        res.json(results[0]);
       } else {
         res.status(404).json('Product not found.');
       }
@@ -81,7 +75,6 @@ const updateProduct = (req, res) => {
   const { id } = req.params;
   const { NAME, DESCRIPTION, PRICE, QUANTITY, AVAILABLE, PICTURE } = req.body;
 
-  // Decode base64 picture if provided
   const pictureBuffer = PICTURE ? Buffer.from(PICTURE.split(",")[1], 'base64') : null;
 
   const query = `
@@ -100,6 +93,7 @@ const updateProduct = (req, res) => {
     }
   });
 };
+
 
 
 module.exports = {

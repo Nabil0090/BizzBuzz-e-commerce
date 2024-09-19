@@ -1,6 +1,6 @@
-const db = require('../db'); // Import the database connection
+const db = require('../db'); 
 
-// Function to get all users
+
 const getAllUsers = (req, res) => {
   const query = 'SELECT * FROM USER';
 
@@ -14,7 +14,7 @@ const getAllUsers = (req, res) => {
   });
 };
 
-// Function for user sign-up
+
 const signUpUser = (req, res) => {
   const { email, password, name, phone_no, address, user_type } = req.body;
 
@@ -31,7 +31,7 @@ const signUpUser = (req, res) => {
   });
 };
 
-// Function for user sign-in
+
 const signInUser = (req, res) => {
   const { email, password } = req.body;
 
@@ -52,9 +52,9 @@ const signInUser = (req, res) => {
   });
 };
 
-// Function to fetch user profile
+
 const getUserProfile = (req, res) => {
-  const userId = req.params.id; // Assuming you pass user ID as a route parameter
+  const userId = req.params.id; 
 
   const query = 'SELECT * FROM USER WHERE USER_ID = ?';
   db.query(query, [userId], (err, results) => {
@@ -71,9 +71,9 @@ const getUserProfile = (req, res) => {
   });
 };
 
-// Function to update user profile
+
 const updateUserProfile = (req, res) => {
-  const userId = req.params.id; // Assuming you pass user ID as a route parameter
+  const userId = req.params.id; 
   const { EMAIL, PASSWORD, NAME, PHONE_NO, ADDRESS, USER_TYPE } = req.body;
   console.log(req.body)
   const query = 'UPDATE USER SET EMAIL = ?, PASSWORD = ?, NAME = ?, PHONE_NO = ?, ADDRESS = ?, USER_TYPE = ? WHERE USER_ID = ?';
@@ -89,9 +89,9 @@ const updateUserProfile = (req, res) => {
   });
 };
 
-// Function to delete user profile
+
 const deleteUserProfile = (req, res) => {
-  const userId = req.params.id; // Assuming you pass user ID as a route parameter
+  const userId = req.params.id; 
 
   const query = 'DELETE FROM USER WHERE USER_ID = ?';
   db.query(query, [userId], (err, results) => {
